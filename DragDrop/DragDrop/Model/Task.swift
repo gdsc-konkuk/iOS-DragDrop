@@ -9,8 +9,9 @@ import Foundation
 import SwiftData
 
 @Model
-final class Task {
+class Task {
     var name: String
+    @Attribute(.unique)
     var category: String
     var isPinned: Bool
     var isDone: Bool
