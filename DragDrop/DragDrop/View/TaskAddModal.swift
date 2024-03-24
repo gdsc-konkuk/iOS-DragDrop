@@ -9,7 +9,26 @@ import SwiftUI
 
 struct TaskAddModal: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                // cancel button
+                Button {
+                    
+                } label: {
+                    Text("취소")
+                }
+                Spacer()
+                // save button
+                Button {
+                    
+                } label: {
+                    Text("저장")
+                }
+            }
+            .font(.system(size: 15))
+        }
+        .foregroundStyle(.black)
+        .padding()
     }
 }
 
