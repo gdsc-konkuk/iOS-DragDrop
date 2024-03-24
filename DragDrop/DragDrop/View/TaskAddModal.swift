@@ -9,9 +9,11 @@ import SwiftUI
 
 struct TaskAddModal: View {
     @State private var title: String = ""
+    @State private var isOnPinTask: Bool = false
+    @State private var isOnCompleteTask: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             HStack {
                 // cancel button
                 Button {} label: {
@@ -61,6 +63,17 @@ struct TaskAddModal: View {
                     .foregroundStyle(.hex393939)
             }
             .padding(.top, 60)
+            
+            VStack {
+                Toggle(isOn: $isOnPinTask, label: {
+                    Text("pin this task")
+                })
+                Toggle(isOn: $isOnCompleteTask, label: {
+                    Text("complete this task")
+                })
+            }
+            .font(.system(size: 20, weight: .medium))
+            .padding(.top, 30)
         }
         .foregroundStyle(.black)
         .padding()
