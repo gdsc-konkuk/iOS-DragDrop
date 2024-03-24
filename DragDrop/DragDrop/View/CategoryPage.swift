@@ -10,43 +10,24 @@ import SwiftData
 
 struct CategoryPage: View {
     @Environment(\.modelContext) private var modelContext
+    @FocusState private var focusedField: FocusedField?
     @Query private var tasks: [Task]
+    var name
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+        VStack {
+            
         }
     }
 
-    private func addItem() {
+    private func addTask() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+            let newTask = Task(name: name, category: Category, isPinned: false, isDone: false)
+            modelContext.insert(newTask)
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteTask(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
                 modelContext.delete(items[index])
@@ -55,6 +36,9 @@ struct CategoryPage: View {
     }
 }
 
+private enum FocusedField {
+    case name
+}
 
 #Preview {
     CategoryPage()
