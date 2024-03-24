@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TaskAddModal: View {
+    @State private var title: String = ""
+    
     var body: some View {
         VStack {
             HStack {
@@ -37,6 +39,28 @@ struct TaskAddModal: View {
             Divider()
                 .frame(height: 1)
                 .background(.black)
+            
+            // task title input view
+            VStack(alignment: .trailing, spacing: 5) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("title")
+                            .font(.system(size: 20, weight: .semibold))
+                        // title textfield
+                        TextField("", text: $title)
+                            .font(.system(size: 15))
+                    }
+                    Spacer()
+                }
+                Divider()
+                    .frame(height: 0.5)
+                    .background(.black)
+                // title count
+                Text("\(title.count)/30")
+                    .font(.system(size: 14))
+                    .foregroundStyle(.hex393939)
+            }
+            .padding(.top, 60)
         }
         .foregroundStyle(.black)
         .padding()
