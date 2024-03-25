@@ -32,7 +32,9 @@ struct CategoryPage: View {
             Rectangle()
                 .frame(width: screenWidth * 0.85, height: 1)
             //TaskCard List
-            
+            List(tasks, id: \.self) { task in
+                TaskCard(task: task)
+            }
             //Pined Task
             
             //Confirmed Task
