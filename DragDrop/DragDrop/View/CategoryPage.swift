@@ -36,7 +36,23 @@ struct CategoryPage: View {
                 TaskCard(task: task)
             }
             //Pined Task
-            
+            RoundedRectangle(cornerRadius: 10)
+//                .foregroundColor(Color.hexFAD167)
+                .stroke(lineWidth: 1.0)
+                .frame(width: screenWidth * 0.85, height: 46)
+                .overlay(alignment: .leading, content: {
+                    HStack(spacing: 0) {
+                        Button(action: {}, label: {
+                            Image(systemName: "pin.fill")
+                                .padding()
+                                .foregroundColor(.black)
+                            
+                        })
+                        .background(Color.hexFAD167)
+                            
+                    }
+                    
+                })
             //Confirmed Task
             
             Spacer()
