@@ -23,6 +23,7 @@
 		09B062B02BAC1D7500C79B1D /* TaskEditModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B062AF2BAC1D7500C79B1D /* TaskEditModal.swift */; };
 		09B062B22BAC1D7C00C79B1D /* TaskAddModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B062B12BAC1D7C00C79B1D /* TaskAddModal.swift */; };
 		09B062B42BAC202500C79B1D /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B062B32BAC202500C79B1D /* TaskCard.swift */; };
+		884E148D2BB17EF400CE6756 /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E148C2BB17EF400CE6756 /* DropDownPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		09B062AF2BAC1D7500C79B1D /* TaskEditModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditModal.swift; sourceTree = "<group>"; };
 		09B062B12BAC1D7C00C79B1D /* TaskAddModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddModal.swift; sourceTree = "<group>"; };
 		09B062B32BAC202500C79B1D /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
+		884E148C2BB17EF400CE6756 /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				09B062B32BAC202500C79B1D /* TaskCard.swift */,
+				884E148C2BB17EF400CE6756 /* DropDownPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			files = (
 				09B062A42BAC18E100C79B1D /* Task.swift in Sources */,
 				09B062782BAC186400C79B1D /* ContentView.swift in Sources */,
+				884E148D2BB17EF400CE6756 /* DropDownPicker.swift in Sources */,
 				09B062762BAC186400C79B1D /* DragDropApp.swift in Sources */,
 				09B062B42BAC202500C79B1D /* TaskCard.swift in Sources */,
 				09B062A62BAC1A9A00C79B1D /* CategoryPage.swift in Sources */,
