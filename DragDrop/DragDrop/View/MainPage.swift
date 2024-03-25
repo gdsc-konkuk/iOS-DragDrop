@@ -11,10 +11,24 @@ import SwiftData
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
 
+struct MainPageTaskCard: View {
+    var task: Task
+    var body: some View {
+        HStack {
+            Image(systemName: "line.3.horizontal")
+                .padding(.leading, 10)
+            Text(task.name)
+            Spacer()
+        }
+        .frame(width: screenWidth * 0.8, height: screenHeight * 0.065)
+        .background(Color.white)
+    }
+}
+
 struct MainPage: View {
     //@Query private var tasks: [Task]
     
-    var tasks: [Task] = [Task(name: "Vision Pro 3D Modeling", category: "iOS", isPinned: false, isDone: false), Task(name: "iOS", category: "iOS", isPinned: false, isDone: false), Task(name: "iOS", category: "iOS", isPinned: false, isDone: false)]
+    var tasks: [Task] = [Task(name: "Vision Pro 3D Modeling", category: "iOS", isPinned: false, isDone: false), Task(name: "iOS", category: "iOS", isPinned: false, isDone: false)]
     
     let today = Date().formatted(.iso8601.year().month().day())
     
@@ -45,9 +59,10 @@ struct MainPage: View {
         NavigationView {
             List {
                 ForEach(tasks) { task in
-                    // TaskCard UI 수정 가능하면 맞출 예정
-                    TaskCard(task: task)
+                    // TaskCard code 논의 필요
+                    MainPageTaskCard(task: task)
                         .listRowBackground(Color.clear)
+                        .cornerRadius(10)
                         .frame(width: screenWidth * 0.8)
                 }
                 .listRowSeparator(.hidden)
@@ -63,7 +78,6 @@ struct MainPage: View {
                 }
             }
         }
-        
     }
     
     private func addTask() {
