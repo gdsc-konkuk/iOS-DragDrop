@@ -15,7 +15,7 @@ struct CategoryPage: View {
     @FocusState private var focusedField: FocusedField?
     @Query private var tasks: [Task]
     
-
+    
     var body: some View {
         VStack {
             //Add Task Button
@@ -37,7 +37,7 @@ struct CategoryPage: View {
             }
             //Pined Task
             RoundedRectangle(cornerRadius: 10)
-//                .foregroundColor(Color.hexFAD167)
+            //                .foregroundColor(Color.hexFAD167)
                 .stroke(lineWidth: 1.0)
                 .frame(width: screenWidth * 0.85, height: 46)
                 .overlay(alignment: .leading, content: {
@@ -49,12 +49,31 @@ struct CategoryPage: View {
                             
                         })
                         .background(Color.hexFAD167)
-                            
+                        
                     }
                     
                 })
             //Confirmed Task
-            
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1.0)
+                .frame(width: screenWidth * 0.85, height: 46)
+                .overlay(alignment: .trailing, content: {
+                    HStack(spacing: 0) {
+                        Button(action: {}, label: {
+                            Image(systemName: "trash.fill")
+                                .padding()
+                                .foregroundColor(.black)
+                        })
+                        .background(Color.hexC53232)
+                        Button(action: {}, label: {
+                            Image(systemName: "checkmark")
+                                .padding()
+                                .foregroundColor(.black)
+                        })
+                        .background(Color.hex2C8616)
+                        
+                    }
+                })
             Spacer()
         }
     }
