@@ -18,6 +18,7 @@ struct MainPageTaskCard: View {
             Image(systemName: "line.3.horizontal")
                 .padding(.leading, 10)
             Text(task.name)
+                .font(.system(size: 14))
             Spacer()
         }
         .frame(width: screenWidth * 0.8, height: screenHeight * 0.065)
@@ -49,7 +50,7 @@ struct MainPage: View {
                 } label: {
                     Image(systemName: "line.horizontal.3")
                         .foregroundStyle(Color.black)
-                        .font(.system(size: 20))
+                        .font(.system(size: 19))
                 }
             }
             // 이걸 어떻게 위치를 잡을 지 항상 고민
@@ -73,7 +74,7 @@ struct MainPage: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                         .padding(.trailing, 10)
-                        .font(.system(size: 15))
+                        .font(.system(size: 14))
                         .foregroundStyle(Color.gray)
                 }
             }
