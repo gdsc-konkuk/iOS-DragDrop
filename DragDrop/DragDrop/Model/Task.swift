@@ -11,8 +11,7 @@ import SwiftData
 @Model
 class Task {
     var name: String
-    @Attribute(.unique)
-    var category: String
+    @Attribute(.unique) var category: String
     var isPinned: Bool
     var isDone: Bool
     

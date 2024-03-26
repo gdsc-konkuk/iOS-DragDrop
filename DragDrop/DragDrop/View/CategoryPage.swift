@@ -13,10 +13,8 @@ struct CategoryPage: View {
     @FocusState private var focusedField: FocusedField?
     @Query private var tasks: [Task]
     
-
     var body: some View {
         VStack {
-            
         }
     }
 }
