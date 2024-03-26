@@ -31,49 +31,38 @@ struct CategoryPage: View {
             
             Rectangle()
                 .frame(width: screenWidth * 0.85, height: 1)
-            //TaskCard List
-            List(tasks, id: \.self) { task in
-                TaskCard(task: task)
+            //Swipe Pined View
+            List() {
+                ForEach(tasks, id: \.self) { task in
+                    //Swipe Task Card List View
+                    TaskCard(task: task)
+                        .frame(width: screenWidth * 0.85, height: 46)
+                        .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
+                            Button(action: {}, label: {
+                                Image(systemName: "pin.fill")
+                                    .padding()
+                                    .foregroundColor(.black)
+                            })
+                            .tint(Color.hexFAD167)
+                        })
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                            HStack(spacing: 0) {
+                                Button(action: {}, label: {
+                                    Image(systemName: "trash.fill")
+                                        .padding()
+                                        .foregroundColor(.black)
+                                })
+                                .tint(Color.hexC53232)
+                                Button(action: {}, label: {
+                                    Image(systemName: "checkmark")
+                                        .padding()
+                                        .foregroundColor(.black)
+                                })
+                                .tint(Color.hex2C8616)
+                            }
+                        })
+                }
             }
-            //Pined Task
-            RoundedRectangle(cornerRadius: 10)
-            //                .foregroundColor(Color.hexFAD167)
-                .stroke(lineWidth: 1.0)
-                .frame(width: screenWidth * 0.85, height: 46)
-                .overlay(alignment: .leading, content: {
-                    HStack(spacing: 0) {
-                        Button(action: {}, label: {
-                            Image(systemName: "pin.fill")
-                                .padding()
-                                .foregroundColor(.black)
-                            
-                        })
-                        .background(Color.hexFAD167)
-                        
-                    }
-                    
-                })
-            //Confirmed Task
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 1.0)
-                .frame(width: screenWidth * 0.85, height: 46)
-                .overlay(alignment: .trailing, content: {
-                    HStack(spacing: 0) {
-                        Button(action: {}, label: {
-                            Image(systemName: "trash.fill")
-                                .padding()
-                                .foregroundColor(.black)
-                        })
-                        .background(Color.hexC53232)
-                        Button(action: {}, label: {
-                            Image(systemName: "checkmark")
-                                .padding()
-                                .foregroundColor(.black)
-                        })
-                        .background(Color.hex2C8616)
-                        
-                    }
-                })
             Spacer()
         }
     }
