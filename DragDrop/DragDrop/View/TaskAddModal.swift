@@ -39,6 +39,11 @@ struct TaskAddModal: View {
                             // title textfield
                             TextField("", text: $title)
                                 .font(.system(size: 15))
+                                .onChange(of: title) { _, _ in
+                                    if title.count > 30 {
+                                        title = String(title.prefix(30))
+                                    }
+                                }
                         }
                         Spacer()
                     }
@@ -46,9 +51,15 @@ struct TaskAddModal: View {
                         .frame(height: 0.5)
                         .background(.black)
                     // title count
-                    Text("\(title.count)/30")
-                        .font(.system(size: 14))
-                        .foregroundStyle(.hex393939)
+                    if title.count >= 30 {
+                        Text("\(title.count)/30")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.hexC53232)
+                    } else {
+                        Text("\(title.count)/30")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.hex393939)
+                    }
                 }
                 .padding(.top, 60)
                 
