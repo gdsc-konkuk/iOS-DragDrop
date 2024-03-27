@@ -9,26 +9,28 @@ import SwiftUI
 
 struct TaskAddModal: View {
     @State private var title: String = ""
-    @State private var isOnPinTask: Bool = false
-    @State private var isOnCompleteTask: Bool = false
-    
+    @State private var isPinned: Bool = false
+    @State private var isCompleted: Bool = false
+
     var body: some View {
         NavigationView {
             VStack(spacing: 15) {
                 // category select view
-                HStack(spacing: 5) {
-                    // category name
-                    Text("iOS")
-                        .font(.system(size: 25, weight: .semibold))
-                    // select button
-                    Button {} label: {
-                        Image(systemName: "chevron.down")
-                            .frame(width: 18, height: 10)
+                VStack {
+                    HStack(spacing: 5) {
+                        // category name
+                        Text("iOS")
+                            .font(.system(size: 25, weight: .semibold))
+                        // select button
+                        Button {} label: {
+                            Image(systemName: "chevron.down")
+                                .frame(width: 18, height: 10)
+                        }
                     }
+                    Divider()
+                        .frame(height: 1)
+                        .background(.black)
                 }
-                Divider()
-                    .frame(height: 1)
-                    .background(.black)
                 
                 // task title input view
                 VStack(alignment: .trailing, spacing: 5) {
@@ -62,12 +64,12 @@ struct TaskAddModal: View {
                     }
                 }
                 .padding(.top, 60)
-                
+
                 VStack {
-                    Toggle(isOn: $isOnPinTask, label: {
+                    Toggle(isOn: $isPinned, label: {
                         Text("pin this task")
                     })
-                    Toggle(isOn: $isOnCompleteTask, label: {
+                    Toggle(isOn: $isCompleted, label: {
                         Text("complete this task")
                     })
                 }
