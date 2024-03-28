@@ -14,10 +14,10 @@ struct TaskCard: View {
             Image(systemName: "line.3.horizontal")
             Text(task.name)
         }
-        .overlay {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray)
-        }
+//        .overlay {
+//            RoundedRectangle(cornerRadius: 10)
+//                .stroke(Color.gray)
+//        }
     }
 }
 

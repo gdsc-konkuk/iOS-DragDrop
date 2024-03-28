@@ -14,7 +14,6 @@ struct CategoryPage: View {
     @Environment(\.modelContext) private var modelContext
     @FocusState private var focusedField: FocusedField?
     @Query private var tasks: [Task]
-    @Query private var categorys: [Category]
     @Binding var selection: String?
     @State var isShowingCategoryList = false
     
@@ -44,17 +43,6 @@ struct CategoryPage: View {
                             .rotationEffect(.degrees((isShowingCategoryList ? -180 : 0)))
                     })
                 }
-                //            .popover(isPresented: $isShowingCategoryList, attachmentAnchor: .point(.topTrailing), content: {
-                //                List() {
-                //                    ForEach(categorys, id: \.self) { category in
-                //                        Text(category.name)
-                //                    }
-                //                }
-                //                .frame(width: 154, height: 170)
-                //                Rectangle()
-                //                    .frame(width: 154, height: 170)
-                //            })
-                //            .scaledToFit()
                 
                 // Divider
                 Rectangle()
@@ -63,18 +51,19 @@ struct CategoryPage: View {
                 //Swipe Task Card List View
                 List() {
                     ForEach(tasks, id: \.self) { task in
-                        TaskCard(task: task)
-                            .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
-                                //pinned action
-                                Button(action: {}, label: {
-                                    Image(systemName: "pin.fill")
-                                        .rotationEffect(.degrees(30))
-                                        .padding()
-                                        .foregroundColor(.black)
+                        HStack {
+                            TaskCard(task: task)
+                                .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
+                                    //pinned action
+                                    Button(action: {}, label: {
+                                        Image(systemName: "pin.fill")
+                                            .rotationEffect(.degrees(30))
+                                            .padding()
+                                            .foregroundColor(.black)
+                                    })
+                                    .tint(Color.hexFAD167)
                                 })
-                                .tint(Color.hexFAD167)
-                            })
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
                                     //confirm action
                                     Button(action: {}, label: {
                                         Image(systemName: "checkmark")
@@ -89,34 +78,34 @@ struct CategoryPage: View {
                                             .foregroundColor(.black)
                                     })
                                     .tint(Color.hexC53232)
-                            })
-                            .frame(width: screenWidth * 0.85, height: 46)
-                            .listRowSeparator(.hidden)
+                                })
+                                .frame(width: screenWidth * 0.85, height: 46)
+                        }
                     }
+                    .listRowSeparator(.hidden)
                 }
                 .background(.white)
                 .scrollContentBackground(.hidden)
+                .padding()
                 Spacer()
             }
         }
         .popup(isPresented: $isShowingCategoryList) {
-            VStack {
-                List() {
-                    ForEach(categorys, id: \.self) { category in
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Text(category.name)
-                        })
-                    }
+            List() {
+                ForEach(tasks, id: \.self) { task in
+                    Button(action: {
+                        selection = task.category
+                        isShowingCategoryList.toggle()
+                    }, label: {
+                        Text(task.category)
+                            .foregroundColor(.black)
+                    })
                 }
-//                .padding()
             }
-            .overlay(content: {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(.opacity(0.5))
-            })
+            .scrollContentBackground(.hidden)
             .frame(width: 154, height: 170)
             .padding(.vertical, 60)
-            .padding()
+            .background(.opacity(0.0), ignoresSafeAreaEdges: .all)
             
         } customize: {
             $0
