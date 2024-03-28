@@ -10,88 +10,83 @@ import SwiftUI
 
 struct DropDownPicker: View {
     @Binding var selection: String?
-    var options: [String]
+    var options: [Category]
     var maxWidth: CGFloat = 180
     
     @State var showDropdown = false
     
-    @SceneStorage("drop_down_zindex") private var index = 1000.0
-    @State var zindex = 1000.0
-    
     var body: some View {
-        GeometryReader {
-            let size = $0.size
+        GeometryReader { geometry in
             
             VStack(spacing: 0) {
                 HStack {
-                    Text(selection == nil ? "Select" : selection!)
-                        .foregroundColor(selection != nil ? .black : .gray)
+                    Text(selection == nil ? "" : selection!)
+                        .foregroundColor(selection != nil ? Color.black : Color.gray)
+                        .font(.system(size: 25, weight: .semibold))
                     
-                    Spacer(minLength: 0)
+//                    Spacer(maxLength: 0)
                     
                     Image(systemName:"chevron.down")
-                        .font(.title3)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.gray)
                         .rotationEffect(.degrees((showDropdown ? -180 : 0)))
+                        .onTapGesture {
+                            withAnimation(.snappy) {
+                                showDropdown.toggle()
+                            }
+                        }
                 }
                 .padding(.horizontal, 15)
                 .frame(width: 180, height: 50)
-                .background(.white)
+                .background(Color.white)
                 .contentShape(.rect)
-                .onTapGesture {
-                    index += 1
-                    zindex = index
-//                    바운스가 적은
-                    withAnimation(.snappy) {
-                        showDropdown.toggle()
-                    }
-                }
-                .zIndex(10)
                 
                 if showDropdown {
-                    OptionsView()
+                        OptionsView()
                 }
             }
             .clipped()
             .background(.white)
             .cornerRadius(10)
             .overlay {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.gray)
+                if showDropdown {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray)
+                }
+                else {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.white)
+                }
             }
-            .frame(height: size.height, alignment: .top)
             
         }
         .frame(width: maxWidth, height: 50)
-        .zIndex(zindex)
     }
     func OptionsView() -> some View {
         VStack(spacing: 0) {
             ForEach(options, id: \.self) { option in
-                Text(option)
-                    .foregroundStyle(selection == option ? Color.primary : Color.gray)
-                    .animation(.none, value: selection)
-                    .frame(height: 40)
-                    .contentShape(.rect)
-                    .padding(.horizontal, 15)
-                    .onTapGesture {
-                        withAnimation(.snappy) {
-                            selection = option
-                            showDropdown.toggle()
-                        }
+                Button(action: {
+                    withAnimation(.snappy) {
+                        selection = option.name
+                        showDropdown.toggle()
                     }
+                }, label: {
+                    Text(option.name)
+                        .foregroundColor(.gray)
+                })
+                .frame(height: 40)
+                .padding(.horizontal, 15)
             }
         }
         .transition(.move(edge: .top))
-        .zIndex(1)
     }
 }
 
 //#Preview {
-//    DropDownPicker( selection: Binding<String?>, options: [
+//    DropDownPicker( selection: .constant(""), options: [
 //        "iOS",
 //        "GDSC",
 //        "CS",
 //        "PathPal"
+//        
 //    ])
 //}
