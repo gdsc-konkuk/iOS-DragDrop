@@ -1,5 +1,5 @@
 //
-//  MainPage.swift
+//  BoardPage.swift
 //  DragDrop
 //
 //  Created by Suji Lee on 3/21/24.
@@ -8,7 +8,8 @@
 import SwiftUI
 import SwiftData
 
-struct MainPage: View {
+struct BoardPage: View {
+    @Environment(\.modelContext) private var modelContext
     //    @Query private var tasks: [Task]
     let today = Date().formatted(.iso8601.year().month().day())
     var tasks: [Task] = [Task(name: "one", category: "One"), Task(name: "two", category: "Two")]
@@ -59,5 +60,5 @@ struct MainPage: View {
 }
 
 #Preview {
-    MainPage()
+    BoardPage()
 }
