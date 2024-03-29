@@ -9,33 +9,39 @@ import SwiftUI
 
 struct TaskCard: View {
     var task: Task
-    var isOnBoard: Bool?
+    var isOnBoard: Bool
     
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(.white)
-                .frame(width: screenWidth * 0.75, height: 50)
+                .frame(width: screenWidth * 0.8, height: 60)
                 .overlay {
-                    if let isOnBoard = isOnBoard  {
+                    if !isOnBoard {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray)
                     }
-                    HStack(spacing: 10) {
-                        Image(systemName: "line.3.horizontal")
+                    // Content
+                    HStack(spacing: 17) {
+                        Image("hamberger")
                             .onTapGesture {
                                 //drag & drop feature
                             }
+                        VStack(alignment: .leading) {
+                            Text(task.category)
+                                .foregroundColor(.hexB6B6B6)
+                                .font(.system(size: 13))
                         Text(task.name)
                             .font(.system(size: 16, weight: .regular))
+                        }
                         Spacer()
                     }
-                    .padding()
+                    .padding(.leading, 15)
                 }
         }
     }
 }
 
 #Preview {
-    TaskCard(task: Task(name: "iOS", category: "iOS", isPinned: false, isDone: false))
+    TaskCard(task: Task(name: "preview", category: "Preview"), isOnBoard: false)
 }

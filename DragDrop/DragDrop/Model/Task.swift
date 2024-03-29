@@ -12,13 +12,17 @@ import SwiftData
 class Task {
     var name: String
     @Attribute(.unique) var category: String
-    var isPinned: Bool
-    var isDone: Bool
+    var isPinned: Bool {
+        if category == "board" {
+            return true
+        } else {
+            return  false
+        }
+    }
+    var isDone: Bool = false
     
-    init(name: String, category: String, isPinned: Bool, isDone: Bool) {
+    init(name: String, category: String) {
         self.name = name
         self.category = category
-        self.isPinned = isPinned
-        self.isDone = isDone
     }
 }
