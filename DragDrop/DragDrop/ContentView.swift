@@ -8,10 +8,27 @@
 import SwiftUI
 import SwiftData
 
+let screenWidth = UIScreen.main.bounds.width
+let screenHeight = UIScreen.main.bounds.height
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
+    
     var body: some View {
-        MainPage()
+        var _: Category = Category(name: "test")
+        NavigationStack {
+            MainPage()
+        }
+    }
+}
+
+extension Category {
+    // TO DO :  move to MainPage.swift
+    func addCategory(name: String) {
+        withAnimation {
+            let newCategory = Category(name: name)
+            modelContext?.insert(newCategory)
+        }
     }
 }
 

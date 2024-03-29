@@ -29,4 +29,6 @@ struct DragDropApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
+    
+
 }

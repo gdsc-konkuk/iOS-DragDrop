@@ -1,18 +1,18 @@
 //
-//  CategoryList.swift
+//  CategoryListSidebar.swift
 //  DragDrop
 //
-//  Created by Suji Lee on 3/21/24.
+//  Created by Suji Lee on 3/26/24.
 //
 
 import SwiftUI
 
-struct CategoryList: View {
+struct CategoryListSidebar: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    CategoryList()
+    CategoryListSidebar()
 }

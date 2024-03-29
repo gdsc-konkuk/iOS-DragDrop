@@ -10,12 +10,12 @@ import SwiftData
 
 @Model
 final class Category {
-    @Attribute(.unique)
-    var name: String
-    @Relationship(deleteRule: .cascade)
-    var tasks: [Task]?
+    @Attribute(.unique) var name: String
+    @Relationship(deleteRule: .cascade) var tasks: [Task]?
 
     init(name: String) {
         self.name = name
     }
 }
+
+
