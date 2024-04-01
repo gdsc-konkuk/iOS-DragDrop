@@ -26,6 +26,7 @@
 		09F0859D2BB2C5A200EDB6C2 /* CategoryListSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F0859C2BB2C5A200EDB6C2 /* CategoryListSidebar.swift */; };
 		09F0859F2BB2C5C400EDB6C2 /* CategoryAddModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F0859E2BB2C5C400EDB6C2 /* CategoryAddModal.swift */; };
 		234C51A12BBA968B0011C740 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C51A02BBA968B0011C740 /* CategoryHeader.swift */; };
+		234C51A32BBAB36D0011C740 /* TaskModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C51A22BBAB36D0011C740 /* TaskModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		09F0859C2BB2C5A200EDB6C2 /* CategoryListSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListSidebar.swift; sourceTree = "<group>"; };
 		09F0859E2BB2C5C400EDB6C2 /* CategoryAddModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddModal.swift; sourceTree = "<group>"; };
 		234C51A02BBA968B0011C740 /* CategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
+		234C51A22BBAB36D0011C740 /* TaskModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				09F0859E2BB2C5C400EDB6C2 /* CategoryAddModal.swift */,
 				09B062B12BAC1D7C00C79B1D /* TaskAddModal.swift */,
 				09B062AF2BAC1D7500C79B1D /* TaskEditModal.swift */,
+				234C51A22BBAB36D0011C740 /* TaskModal.swift */,
 				09B062B52BAC202C00C79B1D /* Components */,
 			);
 			path = View;
@@ -325,6 +328,7 @@
 				09B062782BAC186400C79B1D /* ContentView.swift in Sources */,
 				09F0859B2BB2A84300EDB6C2 /* Board.swift in Sources */,
 				09B062762BAC186400C79B1D /* DragDropApp.swift in Sources */,
+				234C51A32BBAB36D0011C740 /* TaskModal.swift in Sources */,
 				09F0859D2BB2C5A200EDB6C2 /* CategoryListSidebar.swift in Sources */,
 				09B062B42BAC202500C79B1D /* TaskCard.swift in Sources */,
 				09B062A62BAC1A9A00C79B1D /* CategoryPage.swift in Sources */,
