@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct EditPage: View {
-    var tasks: [Task] = [Task(name: "Study", category: "iOS"), Task(name: "Vision Pro Study", category: "iOS")]
+    var pinnedTasks: [Task] = [Task(name: "Study", category: "iOS"), Task(name: "Vision Pro Study", category: "iOS")]
 
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
+            // board
             List {
-                ForEach(tasks) { task in
+                ForEach(pinnedTasks) { task in
                     TaskCard(task: task, isOnBoard: true)
                         .listRowBackground(Color.clear)
                 }
@@ -26,6 +27,10 @@ struct EditPage: View {
                     .frame(width: 15, height: 22)
                     .rotationEffect(.degrees(36.6))
                     .offset(x: 0, y: -7)
+            }
+            
+            VStack {
+                CategoryHeader()
             }
         }
         .padding()
