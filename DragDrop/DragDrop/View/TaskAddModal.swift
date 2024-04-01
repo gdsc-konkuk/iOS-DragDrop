@@ -30,7 +30,7 @@ struct TaskAddModal: View {
                         .frame(height: 1)
                         .background(.black)
                 }
-                
+
                 // task title input view
                 VStack(alignment: .trailing, spacing: 5) {
                     HStack {
@@ -72,6 +72,15 @@ struct TaskAddModal: View {
                 .font(.system(size: 20, weight: .medium))
                 .padding(.top, 30)
                 Spacer()
+
+                // Delete button
+                Button {} label: {
+                    Image(systemName: "trash")
+                        .resizable()
+                        .foregroundStyle(.hexC53232)
+                        .frame(width: 30, height: 38)
+                }
+                .hidden()
             }
             .padding()
             .toolbar {
