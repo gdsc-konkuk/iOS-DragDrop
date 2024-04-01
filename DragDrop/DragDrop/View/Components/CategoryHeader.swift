@@ -10,15 +10,26 @@ import SwiftUI
 struct CategoryHeader: View {
     var body: some View {
         VStack {
-            HStack(spacing: 5) {
-                // category name
-                Text("iOS")
-                    .font(.system(size: 25, weight: .semibold))
-                // select button
-                Button {} label: {
-                    Image(systemName: "chevron.down")
-                        .frame(width: 18, height: 10)
+            ZStack(alignment: .trailing) {
+                HStack(alignment: .center, spacing: 5) {
+                    // category name
+                    Text("iOS")
+                        .font(.system(size: 25, weight: .semibold))
+                    // select button
+                    Button {} label: {
+                        Image(systemName: "chevron.down")
+                            .frame(width: 18, height: 10)
+                    }
                 }
+                .frame(width: screenWidth)
+                
+                // swipe image
+                HStack {
+                    Image(systemName: "chevron.forward.2")
+                        .foregroundStyle(.hexADADAD)
+                }
+                .padding(.trailing, 10)
+                .hidden()
             }
             Divider()
                 .frame(height: 1)
