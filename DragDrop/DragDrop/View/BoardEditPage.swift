@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditPage: View {
     var pinnedTasks: [Task] = [Task(name: "Study", category: "iOS"), Task(name: "Vision Pro Study", category: "iOS")]
+    var tasks: [Task] = [Task(name: "WWDC", category: "iOS")]
 
     var body: some View {
         VStack(spacing: 30) {
@@ -21,7 +22,7 @@ struct EditPage: View {
                 .listRowSeparator(.hidden)
             }
             .cornerRadius(10)
-            .frame(height: screenHeight*0.55)
+            .frame(height: screenHeight*0.5)
             .overlay(alignment: .top) {
                 Image(systemName: "pin.fill")
                     .frame(width: 15, height: 22)
@@ -31,9 +32,14 @@ struct EditPage: View {
             
             VStack {
                 CategoryHeader()
+                List(tasks) { task in
+                    TaskCard(task: task, isOnBoard: false)
+                        .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
             }
         }
-        .padding()
+        .padding(20)
     }
 }
 
