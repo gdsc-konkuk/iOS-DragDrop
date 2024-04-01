@@ -31,7 +31,7 @@ struct EditPage: View {
             }
             
             VStack {
-                CategoryHeader()
+                CategoryHeader(isOnEditPage: true)
                 List(tasks) { task in
                     TaskCard(task: task, isOnBoard: false)
                         .listRowSeparator(.hidden)

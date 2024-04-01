@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CategoryHeader: View {
+    var isOnEditPage: Bool = false
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             ZStack(alignment: .trailing) {
                 HStack(alignment: .center, spacing: 5) {
                     // category name
@@ -24,12 +26,13 @@ struct CategoryHeader: View {
                 .frame(width: screenWidth)
                 
                 // swipe image
-                HStack {
-                    Image(systemName: "chevron.forward.2")
-                        .foregroundStyle(.hexADADAD)
+                if isOnEditPage {
+                    HStack {
+                        Image(systemName: "chevron.forward.2")
+                            .foregroundStyle(.hexADADAD)
+                    }
+                    .padding(.trailing, 20)
                 }
-                .padding(.trailing, 10)
-                .hidden()
             }
             Divider()
                 .frame(height: 1)
