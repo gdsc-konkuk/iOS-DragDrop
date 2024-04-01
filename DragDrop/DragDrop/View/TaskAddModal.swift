@@ -10,7 +10,6 @@ import SwiftUI
 struct TaskAddModal: View {
     @State private var title: String = ""
     @State private var isPinned: Bool = false
-    @State private var isCompleted: Bool = false
 
     var body: some View {
         NavigationView {
@@ -69,9 +68,6 @@ struct TaskAddModal: View {
                     Toggle(isOn: $isPinned, label: {
                         Text("pin this task")
                     })
-                    Toggle(isOn: $isCompleted, label: {
-                        Text("complete this task")
-                    })
                 }
                 .font(.system(size: 20, weight: .medium))
                 .padding(.top, 30)
@@ -79,15 +75,15 @@ struct TaskAddModal: View {
             }
             .padding()
             .toolbar {
+                // cancel button
                 ToolbarItem(placement: .topBarLeading) {
-                    // cancel button
                     Button {} label: {
                         Text("취소")
                             .font(.system(size: 15))
                     }
                 }
+                // save button
                 ToolbarItem(placement: .topBarTrailing) {
-                    // save button
                     Button {} label: {
                         Text("저장")
                             .font(.system(size: 15))
