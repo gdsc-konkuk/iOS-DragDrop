@@ -10,6 +10,7 @@ import SwiftUI
 struct TaskAddModal: View {
     @State private var title: String = ""
     @State private var isPinned: Bool = false
+    var isTaskEditModal: Bool = false
 
     var body: some View {
         NavigationView {
@@ -60,13 +61,14 @@ struct TaskAddModal: View {
                 Spacer()
 
                 // Delete button
-                Button {} label: {
-                    Image(systemName: "trash")
-                        .resizable()
-                        .foregroundStyle(.hexC53232)
-                        .frame(width: 30, height: 38)
+                if isTaskEditModal {
+                    Button {} label: {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .foregroundStyle(.hexC53232)
+                            .frame(width: 30, height: 38)
+                    }
                 }
-                .hidden()
             }
             .padding()
             .toolbar {
