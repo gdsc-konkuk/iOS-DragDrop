@@ -14,22 +14,8 @@ struct TaskAddModal: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 15) {
-                // category select view
-                VStack {
-                    HStack(spacing: 5) {
-                        // category name
-                        Text("iOS")
-                            .font(.system(size: 25, weight: .semibold))
-                        // select button
-                        Button {} label: {
-                            Image(systemName: "chevron.down")
-                                .frame(width: 18, height: 10)
-                        }
-                    }
-                    Divider()
-                        .frame(height: 1)
-                        .background(.black)
-                }
+                // category header
+                CategoryHeader()
 
                 // task title input view
                 VStack(alignment: .trailing, spacing: 5) {
