@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TaskCard: View {
-    var task: Task
+    
+    var task: TaskItem
     var isOnBoard: Bool
     
     var body: some View {
@@ -42,6 +43,6 @@ struct TaskCard: View {
     }
 }
 
-#Preview {
-    TaskCard(task: Task(name: "preview", category: "Preview"), isOnBoard: false)
-}
+//#Preview {
+//    TaskCard(task: TaskItem(name: "preview", category: "Preview"), isOnBoard: false)
+//}
