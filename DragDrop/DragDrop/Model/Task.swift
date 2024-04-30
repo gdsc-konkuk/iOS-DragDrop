@@ -12,7 +12,7 @@ import SwiftUI
 
 
 @Model
-class TaskDatas {
+class TaskData {
     var taskItems: [TaskItem]?
     
     init(taskItems: [TaskItem]? = nil) {
@@ -24,7 +24,7 @@ struct TaskItem: Equatable, Identifiable, Codable, Transferable {
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation(for: TaskItem.self, contentType: .taskItem)
     }
-    var id: UUID = UUID()
+    var id: String
     var name: String
     var category: String
     var isPinned: Bool {

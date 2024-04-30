@@ -12,7 +12,7 @@ import SwiftData
 struct DragDropApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Category.self, Task.self
+            Category.self, TaskData.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

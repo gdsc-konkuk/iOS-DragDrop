@@ -12,7 +12,7 @@ struct BoardPage: View {
     @Environment(\.modelContext) private var modelContext
     //    @Query private var tasks: [Task]
     let today = Date().formatted(.iso8601.year().month().day())
-    @State var taskItems: [TaskItem] = [TaskItem(id: "1", name: "one", category: "iOS", isPinned: true, isDone: false), TaskItem(id: "2", name: "two", category: "Year", isPinned: true, isDone: false), TaskItem(id: "3", name: "three", category: "iOS", isPinned: true, isDone: false)]
+    @State var taskItems: [TaskItem] = [TaskItem(id: "1", name: "one", category: "iOS", isDone: false), TaskItem(id: "2", name: "two", category: "Year", isDone: false), TaskItem(id: "3", name: "three", category: "iOS", isDone: false)]
     @State private var draggingItem: TaskItem?
     
     var body: some View {
