@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaskAddModal: View {
+    @Environment(\.modelContext) private var modelContext
     @State private var title: String = ""
     @State private var isPinned: Bool = false
     @State private var isCompleted: Bool = false

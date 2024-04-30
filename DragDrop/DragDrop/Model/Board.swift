@@ -10,11 +10,10 @@ import SwiftData
 
 @Model
 final class Board {
-    var pinnedTasks: [Task]
+    var pinnedTasks: [TaskItem]
     var categories: [Category] = [Category(name: "board")]
     
-    init(pinnedTasks: [Task]) {
+    init(pinnedTasks: [TaskItem]) {
         self.pinnedTasks = pinnedTasks
     }
 }
-

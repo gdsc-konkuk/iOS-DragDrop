@@ -7,22 +7,33 @@
 
 import Foundation
 import SwiftData
+import UniformTypeIdentifiers
+import SwiftUI
+
 
 @Model
-class Task {
-    var name: String
-    @Attribute(.unique) var category: String
-    var isPinned: Bool {
-        if category == "board" {
-            return true
-        } else {
-            return  false
-        }
-    }
-    var isDone: Bool = false
+class TaskData {
+    var taskItems: [TaskItem]?
     
-    init(name: String, category: String) {
-        self.name = name
-        self.category = category
+    init(taskItems: [TaskItem]? = nil) {
+        self.taskItems = taskItems
     }
 }
+
+struct TaskItem: Equatable, Identifiable, Codable, Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(for: TaskItem.self, contentType: .taskItem)
+    }
+    var id: String
+    var name: String
+    var category: String
+    var isPinned: Bool {
+        return category == "board"
+    }
+    var isDone: Bool
+}
+
+extension UTType {
+    static var taskItem = UTType(exportedAs: "com.sujileelea.DragDrop.taskItem")
+}
+

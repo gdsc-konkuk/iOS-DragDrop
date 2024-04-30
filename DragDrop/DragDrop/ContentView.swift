@@ -17,21 +17,10 @@ struct ContentView: View {
     var body: some View {
         var _: Category = Category(name: "test")
         NavigationStack {
-            MainPage()
+            BoardPage()
         }
     }
 }
-
-extension Category {
-    // TO DO :  move to MainPage.swift
-    func addCategory(name: String) {
-        withAnimation {
-            let newCategory = Category(name: name)
-            modelContext?.insert(newCategory)
-        }
-    }
-}
-
 
 //struct ContentView: View {
 //    @Environment(\.modelContext) private var modelContext
