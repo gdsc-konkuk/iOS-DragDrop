@@ -10,6 +10,7 @@ import SwiftUI
 struct TaskCard: View {
     var task: Task
     var isOnBoard: Bool
+    var isPinned: Bool
     
     var body: some View {
         VStack {
@@ -20,6 +21,10 @@ struct TaskCard: View {
                     if !isOnBoard {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray)
+                    }
+                    if isPinned {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.black, lineWidth: 0.5)
                     }
                     // Content
                     HStack(spacing: 17) {
@@ -38,10 +43,18 @@ struct TaskCard: View {
                     }
                     .padding(.leading, 15)
                 }
+                .overlay(alignment: .topLeading) {
+                    if isPinned {
+                        Image(systemName: "pin.fill")
+                            .frame(width: 12, height: 19)
+                            .rotationEffect(.degrees(31))
+                            .offset(x: 15, y: -9)
+                    }
+                }
         }
     }
 }
 
 #Preview {
-    TaskCard(task: Task(name: "preview", category: "Preview"), isOnBoard: false)
+    TaskCard(task: Task(name: "preview", category: "Preview"), isOnBoard: false, isPinned: false)
 }
