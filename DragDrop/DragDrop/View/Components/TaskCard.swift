@@ -11,7 +11,7 @@ struct TaskCard: View {
     var task: Task
     var isOnBoard: Bool
     var isPinned: Bool
-    
+
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
@@ -30,14 +30,16 @@ struct TaskCard: View {
                     HStack(spacing: 17) {
                         Image("hamberger")
                             .onTapGesture {
-                                //drag & drop feature
+                                // drag & drop feature
                             }
                         VStack(alignment: .leading) {
-                            Text(task.category)
-                                .foregroundColor(.hexB6B6B6)
-                                .font(.system(size: 13))
-                        Text(task.name)
-                            .font(.system(size: 16, weight: .regular))
+                            if isOnBoard {
+                                Text(task.category)
+                                    .foregroundColor(.hexB6B6B6)
+                                    .font(.system(size: 13))
+                            }
+                            Text(task.name)
+                                .font(.system(size: 16, weight: .regular))
                         }
                         Spacer()
                     }
