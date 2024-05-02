@@ -18,6 +18,7 @@ struct EditPage: View {
                 ForEach(pinnedTasks) { task in
                     TaskCard(task: task, isOnBoard: true)
                         .listRowBackground(Color.clear)
+                        .listRowInsets(.init(top: 10, leading: 0, bottom: 0, trailing: 0))
                 }
                 .listRowSeparator(.hidden)
             }
@@ -35,6 +36,7 @@ struct EditPage: View {
                 List(tasks) { task in
                     TaskCard(task: task, isOnBoard: false)
                         .listRowSeparator(.hidden)
+                        .listRowInsets(.init(top: 10, leading: 1, bottom: 0, trailing: 1))
                 }
                 .listStyle(.plain)
             }

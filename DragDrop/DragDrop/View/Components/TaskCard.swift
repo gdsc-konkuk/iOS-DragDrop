@@ -15,7 +15,7 @@ struct TaskCard: View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(.white)
-                .frame(width: screenWidth * 0.8, height: 60)
+                .frame(height: 60)
                 .overlay {
                     if !isOnBoard {
                         RoundedRectangle(cornerRadius: 10)
