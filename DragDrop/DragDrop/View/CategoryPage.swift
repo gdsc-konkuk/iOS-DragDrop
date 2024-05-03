@@ -134,3 +134,39 @@
 //    return CategoryPage(selection: .constant("iOS"))
 //            .modelContainer(container)
 //}
+import SwiftUI
+import SwiftData
+
+struct CategoryPage: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: {}, label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(.black)
+                })
+            }
+            .padding()
+            
+            Button(action: {}, label: {
+                HStack {
+                    Text("iOS")
+                        .font(.system(size: 25, weight: .semibold))
+                    Image(systemName: "chevron.down")
+                }
+                .foregroundColor(.black)
+            })
+            
+            Rectangle()
+                .frame(width: screenWidth * 0.85, height: 2)
+                .foregroundColor(.black)
+            
+            
+            
+        }
+    }
+}
+#Preview {
+    CategoryPage()
+}
