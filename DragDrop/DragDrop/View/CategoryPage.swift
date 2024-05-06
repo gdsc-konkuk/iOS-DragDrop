@@ -143,6 +143,7 @@ struct CategoryPage: View {
     //    @Query(filter: #Predicate<TaskData> { task in
     //        task.taskItems.$0.name
     //    }, sort: \TaskData.taskItems) let category: TaskData
+    @State var isEditTask = false
     let category: Category
     var body: some View {
         VStack {
@@ -167,9 +168,13 @@ struct CategoryPage: View {
             Rectangle()
                 .frame(width: screenWidth * 0.85, height: 2)
                 .foregroundColor(.black)
+            
+            //task list
             List(category.taskItems ?? [TaskItem(id: "", name: "WWDC - SwiftData Session #1", category: "iOS", isDone: false)]) { taskItem in
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    isEditTask = true
+                }, label: {
                     HStack {
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.hexADADAD)
@@ -202,6 +207,9 @@ struct CategoryPage: View {
                             .foregroundColor(.black)
                     })
                     .tint(Color.hexC53232)
+                })
+                .sheet(isPresented: $isEditTask, content: {
+                    TaskEditModal()
                 })
             }
         }
