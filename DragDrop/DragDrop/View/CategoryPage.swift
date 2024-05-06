@@ -10,14 +10,14 @@
 //import PopupView
 //
 //struct CategoryPage: View {
-//    
+//
 //    private let screenWidth = UIScreen.main.bounds.width
 //    @Environment(\.modelContext) private var modelContext
 //    @FocusState private var focusedField: FocusedField?
 //    @Query private var tasks: [Task]
 //    @Binding var selection: String?
 //    @State var isShowingCategoryList = false
-//    
+//
 //    var body: some View {
 //        ZStack {
 //            VStack {
@@ -30,7 +30,7 @@
 //                    })
 //                    .padding(.horizontal, 30)
 //                }
-//                
+//
 //                //DropDownPicker
 //                HStack {
 //                    Text(selection ?? "")
@@ -44,11 +44,11 @@
 //                            .rotationEffect(.degrees((isShowingCategoryList ? -180 : 0)))
 //                    })
 //                }
-//                
+//
 //                // Divider
 //                Rectangle()
 //                    .frame(width: screenWidth * 0.85, height: 1)
-//                
+//
 //                //Swipe Task Card List View
 //                List() {
 //                    ForEach(tasks, id: \.self) { task in
@@ -107,7 +107,7 @@
 //            .frame(width: 154, height: 170)
 //            .padding(.vertical, 60)
 //            .background(.opacity(0.0), ignoresSafeAreaEdges: .all)
-//            
+//
 //        } customize: {
 //            $0
 //                .type(.floater())
@@ -117,7 +117,7 @@
 //                .backgroundColor(.black.opacity(0.5))
 //        }
 //    }
-//    
+//
 //}
 //
 //private enum FocusedField {
@@ -138,6 +138,12 @@ import SwiftUI
 import SwiftData
 
 struct CategoryPage: View {
+    //    var taskItem: [TaskItem]
+    //    @Binding var seletedCategory: Category
+    //    @Query(filter: #Predicate<TaskData> { task in
+    //        task.taskItems.$0.name
+    //    }, sort: \TaskData.taskItems) let category: TaskData
+    let category: Category
     var body: some View {
         VStack {
             HStack {
@@ -161,12 +167,24 @@ struct CategoryPage: View {
             Rectangle()
                 .frame(width: screenWidth * 0.85, height: 2)
                 .foregroundColor(.black)
-            
-            
-            
+            List(category.taskItems ?? [TaskItem(id: "", name: "WWDC - SwiftData Session #1", category: "iOS", isDone: false)]) { taskItem in
+                
+                Button(action: {}, label: {
+                    HStack {
+                        Image(systemName: "line.3.horizontal")
+                            .foregroundColor(.hexADADAD)
+                        Text(taskItem.name)
+                            .foregroundStyle(.black)
+                    }
+                })
+                
+            }
         }
+        .listRowSeparator(.hidden)
+        .scrollContentBackground(.hidden)
     }
 }
+
 #Preview {
-    CategoryPage()
+    CategoryPage(category: Category(name: ""))
 }
