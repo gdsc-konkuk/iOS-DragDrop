@@ -177,7 +177,32 @@ struct CategoryPage: View {
                             .foregroundStyle(.black)
                     }
                 })
-                
+                .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
+                    //pinned action
+                    Button(action: {}, label: {
+                        Image(systemName: "pin.fill")
+                            .rotationEffect(.degrees(30))
+                            .padding()
+                            .foregroundColor(.black)
+                    })
+                    .tint(Color.hexFAD167)
+                })
+                .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                    //confirm action
+                    Button(action: {}, label: {
+                        Image(systemName: "checkmark")
+                            .padding()
+                            .foregroundColor(.black)
+                    })
+                    .tint(Color.hex2C8616)
+                    //trash action
+                    Button(action: {}, label: {
+                        Image(systemName: "trash.fill")
+                            .padding()
+                            .foregroundColor(.black)
+                    })
+                    .tint(Color.hexC53232)
+                })
             }
         }
         .listRowSeparator(.hidden)
