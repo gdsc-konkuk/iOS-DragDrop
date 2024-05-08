@@ -35,7 +35,7 @@ struct CategoryHeader: View {
                 }
             }
             Divider()
-                .frame(height: 1)
+                .frame(height: 2)
                 .background(.black)
         }
         .foregroundStyle(.black)

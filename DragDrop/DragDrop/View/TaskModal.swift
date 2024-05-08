@@ -37,17 +37,11 @@ struct TaskModal: View {
                     }
                     Divider()
                         .frame(height: 0.5)
-                        .background(.black)
+                        .background(.hexADADAD)
                     // title count
-                    if title.count >= 30 {
-                        Text("\(title.count)/30")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.hexC53232)
-                    } else {
-                        Text("\(title.count)/30")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.hex393939)
-                    }
+                    Text("\(title.count)/30")
+                        .font(.system(size: 14))
+                        .foregroundStyle(title.count >= 30 ? .hexC53232 : .hex393939)
                 }
                 .padding(.top, 60)
 
