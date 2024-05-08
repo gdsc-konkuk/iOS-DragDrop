@@ -1,37 +1,23 @@
 //
-//  TaskAddModal.swift
+//  TaskModal.swift
 //  DragDrop
 //
-//  Created by Suji Lee on 3/21/24.
+//  Created by 가은 on 4/1/24.
 //
 
 import SwiftUI
 
-struct TaskAddModal: View {
+struct TaskModal: View {
     @State private var title: String = ""
     @State private var isPinned: Bool = false
-    @State private var isCompleted: Bool = false
+    var isTaskEditModal: Bool = false
 
     var body: some View {
         NavigationView {
             VStack(spacing: 15) {
-                // category select view
-                VStack {
-                    HStack(spacing: 5) {
-                        // category name
-                        Text("iOS")
-                            .font(.system(size: 25, weight: .semibold))
-                        // select button
-                        Button {} label: {
-                            Image(systemName: "chevron.down")
-                                .frame(width: 18, height: 10)
-                        }
-                    }
-                    Divider()
-                        .frame(height: 1)
-                        .background(.black)
-                }
-                
+                // category header
+                CategoryHeader()
+
                 // task title input view
                 VStack(alignment: .trailing, spacing: 5) {
                     HStack {
@@ -51,17 +37,11 @@ struct TaskAddModal: View {
                     }
                     Divider()
                         .frame(height: 0.5)
-                        .background(.black)
+                        .background(.hexADADAD)
                     // title count
-                    if title.count >= 30 {
-                        Text("\(title.count)/30")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.hexC53232)
-                    } else {
-                        Text("\(title.count)/30")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.hex393939)
-                    }
+                    Text("\(title.count)/30")
+                        .font(.system(size: 14))
+                        .foregroundStyle(title.count >= 30 ? .hexC53232 : .hex393939)
                 }
                 .padding(.top, 60)
 
@@ -69,25 +49,32 @@ struct TaskAddModal: View {
                     Toggle(isOn: $isPinned, label: {
                         Text("pin this task")
                     })
-                    Toggle(isOn: $isCompleted, label: {
-                        Text("complete this task")
-                    })
                 }
                 .font(.system(size: 20, weight: .medium))
                 .padding(.top, 30)
                 Spacer()
+
+                // Delete button
+                if isTaskEditModal {
+                    Button {} label: {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .foregroundStyle(.hexC53232)
+                            .frame(width: 30, height: 38)
+                    }
+                }
             }
             .padding()
             .toolbar {
+                // cancel button
                 ToolbarItem(placement: .topBarLeading) {
-                    // cancel button
                     Button {} label: {
                         Text("취소")
                             .font(.system(size: 15))
                     }
                 }
+                // save button
                 ToolbarItem(placement: .topBarTrailing) {
-                    // save button
                     Button {} label: {
                         Text("저장")
                             .font(.system(size: 15))
@@ -100,5 +87,5 @@ struct TaskAddModal: View {
 }
 
 #Preview {
-    TaskAddModal()
+    TaskModal()
 }
